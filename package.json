@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,9 @@
   },
   "homepage": "https://github.com/yichunjin/Reviews-API-service#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "mongoose": "^5.12.14",
+    "morgan": "^1.10.0",
     "pg": "^8.6.0"
   },
   "devDependencies": {

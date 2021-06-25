@@ -45,10 +45,10 @@ COPY chars
 
 
 CREATE TABLE charReviews (
-  id SERIAL,
+  id SERIAL PRIMARY KEY,
   characteristic_id SERIAL,
   review_id SERIAL,
-  value SMALLINT
+  value FLOAT
   );
 
 COPY charReviews
