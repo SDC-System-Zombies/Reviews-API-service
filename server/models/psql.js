@@ -80,7 +80,6 @@ module.exports = {
       callback(null, 'Updated');
     })
     .catch((err) => {console.log('insert table error:' + err); callback(err);});
-
   }
 
 }
