@@ -31,7 +31,7 @@ const Reviews = mongoose.model('reviews', reviewsSchema);
 const Photos = mongoose.model('photos', photosSchema);
 
 
-const updateReviews = async (productId, callback) => {
+const updateReviews = async () => {
   for (let i = 1000000; i < 6144923; i++) {
     let photos = [];
     await Photos.find({review_id: i})
@@ -51,8 +51,10 @@ const updateReviews = async (productId, callback) => {
 
 }
 
-const find = () => {
-  console.log()
+const find = (productId, callback) => {
+  Reviews.find({product_id:`${productId}`})
+    .then((data) => {callback(data)})
+    .catch((err) => {console.log(err); callback(404)});
 }
 
 module.exports.find = find;

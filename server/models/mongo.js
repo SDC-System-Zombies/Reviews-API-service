@@ -1,23 +1,10 @@
-const pool = require('../databases/postgres');
+const {find} = require('../databases/mongodb');
 
 module.exports = {
 
   getAll: (productId, sort, callback) => {
 
-    const queryStr = `SELECT reviews.id as review_id, * FROM reviews WHERE reviews.product_id = ${productId} ORDER BY reviews.${sort} DESC;`;
-
-    pool.query(queryStr)
-      .then((data) => {
-        let detail = {product: productId};
-        results = data.rows;
-        for (let i of results) {
-          delete i.id;
-          delete i.product_id;
-        }
-        detail.results = results;
-        callback(null, detail);
-      })
-      .catch((err) => {console.log('Query All Error: ' + err); callback(404)});
+    find(productId, (data) => { callback(null, data) });
   },
 
   getMeta: (productId, callback) => {
@@ -77,10 +64,12 @@ module.exports = {
 
     pool.query(queryStr)
     .then((data) => {
-      callback(null, 'Updated');
+      callback(null, data);
     })
     .catch((err) => {console.log('insert table error:' + err); callback(err);});
 
   }
 
 }
+
+// module.exports.getAll(13023, (data) => console.log(data.rows));
