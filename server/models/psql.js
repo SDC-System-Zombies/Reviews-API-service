@@ -5,29 +5,18 @@ module.exports = {
 
   getAll: (productId, sort, callback) => {
 
-    const queryStr = `SELECT reviews.id as review_id, reviews.rating, reviews.summary, reviews.recommend, reviews.response, reviews.body, reviews.body, reviews.date, reviews.reviewer_name, reviews.helpfulness, photos.id as id, photos.review_id as photo_review, photos.url FROM reviews LEFT JOIN photos ON reviews.id = photos.review_id
-    WHERE reviews.product_id = ${productId} ORDER BY reviews.${sort} DESC;`;
+    // const queryStr = `SELECT reviews.id as review_id, reviews.rating, reviews.summary, reviews.recommend, reviews.response, reviews.body, reviews.body, reviews.date, reviews.reviewer_name, reviews.helpfulness, photos.id as id, photos.review_id as photo_review, photos.url FROM reviews LEFT JOIN photos ON reviews.id = photos.review_id
+    // WHERE reviews.product_id = ${productId} ORDER BY reviews.${sort} DESC;`;
+
+    const queryStr = `SELECT reviews.id as review_id, * FROM reviews WHERE reviews.product_id = ${productId} ORDER BY reviews.${sort} DESC;`;
 
     pool.query(queryStr)
       .then((data) => {
-        let detail={};
-        detail.product = productId;
-        detail.results = [];
-        let results = [];
-        let reviewIds = [];
-        for (let i of data.rows) {
-          if (!i.photos) {
-            i.photos = [];
-          }
-          if (i.review_id === i.photo_review) {
-            i.photos.push({id: i.id, url: i.url});
-          }
-          if (reviewIds.indexOf(i.review_id) < 0) {
-            reviewIds.push(i.review_id);
-            delete i.id;
-            delete i.url;
-            results.push(i);
-          }
+        let detail = {product: productId};
+        results = data.rows;
+        for (let i of results) {
+          delete i.id;
+          delete i.product_id;
         }
         detail.results = results;
         callback(null, detail);

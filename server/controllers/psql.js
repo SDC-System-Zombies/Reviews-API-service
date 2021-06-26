@@ -1,4 +1,4 @@
-var models = require('../models/reviews');
+var models = require('../models/psql');
 
 module.exports = {
 

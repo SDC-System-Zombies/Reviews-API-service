@@ -1,5 +1,8 @@
 {
   "cSpell.ignoreWords": [
     "postgres"
+  ],
+  "cSpell.words": [
+    "psql"
   ]
 }

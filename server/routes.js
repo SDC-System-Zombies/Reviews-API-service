@@ -1,4 +1,4 @@
-const controller = require('./controllers/reviews');
+const controller = require('./controllers/psql');
 const router = require('express').Router();
 
 router.get('/reviews', controller.get);
