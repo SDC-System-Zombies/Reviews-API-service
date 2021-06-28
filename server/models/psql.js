@@ -8,11 +8,14 @@ module.exports = {
 
     pool.query(queryStr)
       .then((data) => {
-        let detail = {product: productId};
+        let detail = {product: productId, page: 0, count: data.rows.length};
         results = data.rows;
         for (let i of results) {
           delete i.id;
           delete i.product_id;
+          if (!i.photos) {
+            i.photos = [];
+          }
         }
         detail.results = results;
         callback(null, detail);
@@ -29,13 +32,13 @@ module.exports = {
 
     pool.query(queryStr)
       .then((data) => {
-        let result = {product_id: productId, rating: {}, recommended: {}};
+        let result = {product_id: productId, ratings: {}, recommended: {}};
         let characteristics = {};
         for (let i of data.rows) {
-          if (result.rating[i.rating]) {
-            result.rating[i.rating]++;
+          if (result.ratings[i.rating]) {
+            result.ratings[i.rating]++;
           } else {
-            result.rating[i.rating] = 1;
+            result.ratings[i.rating] = 1;
           }
           if (result.recommended[i.recommend]) {
             result.recommended[i.recommend]++;

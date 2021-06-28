@@ -1,5 +1,5 @@
-// var models = require('../models/psql');
-var models = require('../models/mongo');
+var models = require('../models/psql');
+// var models = require('../models/mongo');
 
 module.exports = {
 

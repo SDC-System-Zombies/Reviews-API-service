@@ -62,7 +62,7 @@ const updateReviews = async () => {
 module.exports = {
 
   getAll: (productId, callback) => {
-    Reviews.find({product_id:`${productId}`})
+    Reviews.find({product_id: productId})
       .then((data) => {
         detail = {product: productId};
         results = [];
@@ -81,7 +81,7 @@ module.exports = {
   getMeta: async (productId, callback) => {
     let results = {product_id: productId, rating: {}, recommended: {}, characteristics: {}};
 
-    await Reviews.find({product_id:`${productId}`})
+    await Reviews.find({product_id: productId})
                  .then((data) => {
                     data.forEach((i) => {
                       if (results.rating[i.rating]) {
@@ -121,6 +121,19 @@ module.exports = {
       callback(results);
     })
       .catch((err) => {console.log(err); callback(404)});
+  },
+
+  put: (endpoint, review_id, callback) => {
+    if (endpoint === 'helpful') {
+      Reviews.updateOne({review_id: review_id},{$inc: {'helpfulness': 1}})
+        .then((data) => callback('Updated'))
+        .catch((err) => {console.log(err); callback(404)});
+    }
+    if (endpoint === 'report') {
+      Reviews.updateOne({review_id: productId},{reported: true})
+      .then((data) => callback('Updated'))
+      .catch((err) => {console.log(err); callback(404)});
+    }
   }
 
 }
