@@ -2,7 +2,7 @@ const controller = require('./controllers/psql');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  res.send('Hello, you are connecting to SDC API')
+  res.send('Hello, you are connecting to SDC API ');
 });
 
 router.get('/reviews', controller.get);
