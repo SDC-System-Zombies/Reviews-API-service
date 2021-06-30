@@ -4,7 +4,7 @@ const pool = new Pool({
   host: 'ec2-3-142-46-88.us-east-2.compute.amazonaws.com',
   hostname: 'ubuntu',
   user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'woshiyuzhoumeishaonv!',
+  password: 'woshiyuzhoumeishaonv!',
   database: 'sdc'
 });
 
