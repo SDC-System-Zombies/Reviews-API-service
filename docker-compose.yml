@@ -1,29 +1,33 @@
-# version: "3.7"
+version: "3.7"
 
-# services:
-#   reviews-server:
-#     image: node:14-alpine3.12
-#     command: sh -c "npm install && npm run start:prod"
-#     ports:
-#       - 3000:3000
-#     working_dir: /Reviews-API-service
-#     volumes:
-#       - ./:/Reviews-API-service
-#     environment:
-#       POSTGRES_USER: kathy
-#       POSTGRES_PASSWORD: mima!!!
-#       POSTGRES_DB: sdc
-#       DB_HOST: psql
-#       DATABASE_URL: postgres://kathy:mima!!!@db:5432/sdc
+services:
+  reviews-server:
+    image: node:14-alpine3.12
+    command: sh -c "npm install && npm run start:prod"
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    working_dir: /Reviews-API-service
+    volumes:
+      - ./:/Reviews-API-service
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: kathy
+      DB_PASSWORD: mima!!!
+      DB_HOST: postgres
 
-#   psql:
-#     image: postgres:13.3
-#     volumes:
-#       - reviews-db:/var/lib/postgresql/data
-#     environment:
-#       POSTGRES_USER: kathy
-#       POSTGRES_PASSWORD: mima!!!
-#       POSTGRES_DB: sdc
+  postgres:
+    image: postgres:13.3
+    volumes:
+      - /usr/local/var/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: kathy
+      POSTGRES_PASSWORD: mima!!!
+      POSTGRES_DB: sdc
+      PGDATA: /usr/local/var/postgres
+    ports:
+      - '5432:5432'
 
-# volumes:
-#   reviews-db:
+volumes:
+  reviews-db:
