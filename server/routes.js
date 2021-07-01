@@ -5,6 +5,10 @@ router.get('/', (req, res) => {
   res.send('Hello, you are connecting to SDC API ');
 });
 
+router.get('/loaderio-9fa1fb9f7a2da64d23c45d4944fc2a2c/', (req, res) => {
+  res.send('loaderio-9fa1fb9f7a2da64d23c45d4944fc2a2c');
+});
+
 router.get('/reviews', controller.get);
 
 router.get('/reviews/meta', controller.getMeta);
