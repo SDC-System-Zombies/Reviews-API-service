@@ -4,7 +4,8 @@ var models = require('../models/psql');
 module.exports = {
 
   get: function (req, res) {
-    let productId = req.query.product_id;
+    let rNumber = Math.floor(Math.random() * 13025)
+    let productId = req.query.product_id || rNumber;
     let sort = req.query.sort || 'id';
     models.getAll(productId, sort, function(err, results) {
       if (err) { console.log(err); res.sendStatus(404)}
@@ -13,7 +14,8 @@ module.exports = {
   },
 
   getMeta: function (req, res) {
-    let productId = req.query.product_id;
+    let rNumber = Math.floor(Math.random() * 13025)
+    let productId = req.query.product_id || rNumber;
     models.getMeta(productId, function(err, results) {
       if (err) { console.log(err); res.sendStatus(404)}
       res.send(results);
