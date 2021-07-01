@@ -8,8 +8,9 @@ const pool = new Pool({
   database: 'sdc'
 });
 
-pool.connect((err, res) => {
-  console.log(err? err : 'Connected to Prostgres db')
+pool.connect((err, res, release) => {
+  assser(client.release === release);
+  console.log(err? err : 'Connected to Prostgres db');
 });
 
 module.exports = pool;
