@@ -21,6 +21,7 @@
   "homepage": "https://github.com/yichunjin/Reviews-API-service#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "fastify": "^3.18.1",
     "mongoose": "^5.12.14",
     "morgan": "^1.10.0",
     "newrelic": "^7.5.1",
