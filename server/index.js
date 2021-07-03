@@ -39,7 +39,7 @@ fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
 })
 
-fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0', async (request, reply) => {
+fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0.txt', async (request, reply) => {
   return 'loaderio-38f41e0d24bccad1ab13936639f48ee0';
 })
 
