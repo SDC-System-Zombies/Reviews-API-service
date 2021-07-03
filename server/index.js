@@ -40,8 +40,12 @@ fastify.get('/', async (request, reply) => {
 })
 
 fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0', async (request, reply) => {
-  reply.send('loaderio-38f41e0d24bccad1ab13936639f48ee0');
+  return 'loaderio-38f41e0d24bccad1ab13936639f48ee0';
 })
+
+// fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0', async (request, reply) => {
+//   reply.send('loaderio-38f41e0d24bccad1ab13936639f48ee0');
+// })
 
 fastify.get('/reviews', controller.get);
 

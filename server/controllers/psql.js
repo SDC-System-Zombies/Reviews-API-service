@@ -4,9 +4,7 @@ var models = require('../models/psql');
 module.exports = {
 
   get: function (req, res) {
-    console.log(req.query.product_id)
-
-    let productId = req.query.product_id;
+    let productId = req.query.product_id || 1;
     let sort = req.query.sort || 'id';
     return models.getAll(productId, sort, function(err, results) {
       if (err) { console.log(err); res.sendStatus(404)}
