@@ -39,6 +39,10 @@ fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
 })
 
+fastify.get('/loaderio-1e702b6d033d7f9dc152599df07e24af', async (request, reply) => {
+  reply.send('loaderio-1e702b6d033d7f9dc152599df07e24af');
+})
+
 fastify.get('/reviews', controller.get);
 
 // Run the server!
