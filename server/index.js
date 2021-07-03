@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 
 // Set up with fastify
 
-const fastify = require('fastify')({ logger: true })
+const fastify = require('fastify')({ logger: false })
 
 
 fastify.addContentTypeParser('application/json', { parseAs: 'string' }, function (req, body, done) {
@@ -42,10 +42,6 @@ fastify.get('/', async (request, reply) => {
 fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0', async (request, reply) => {
   return 'loaderio-38f41e0d24bccad1ab13936639f48ee0';
 })
-
-// fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0', async (request, reply) => {
-//   reply.send('loaderio-38f41e0d24bccad1ab13936639f48ee0');
-// })
 
 fastify.get('/reviews', controller.get);
 
