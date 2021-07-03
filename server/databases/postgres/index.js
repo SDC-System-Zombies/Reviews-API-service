@@ -1,15 +1,14 @@
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
-  host: 'ec2-3-20-203-183.us-east-2.compute.amazonaws.com',
+  host: 'ec2-18-119-97-99.us-east-2.compute.amazonaws.com',
   hostname: 'ubuntu',
   user: process.env.DB_USER || 'postgres',
   password: 'woshiyuzhoumeishaonv!',
   database: 'sdc'
 });
 
-pool.connect((err, res, release) => {
-  assser(client.release === release);
+pool.connect((err, client, release) => {
   console.log(err? err : 'Connected to Prostgres db');
 });
 

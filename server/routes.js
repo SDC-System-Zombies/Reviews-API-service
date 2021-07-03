@@ -2,11 +2,11 @@ const controller = require('./controllers/psql');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  res.send('Hello, you are connecting to SDC API ');
+  res.send('SDC API ');
 });
 
-router.get('/loaderio-b87f247ce092be207f34db78bc22729a', (req, res) => {
-  res.send('loaderio-b87f247ce092be207f34db78bc22729a');
+router.get('/loaderio-1f2972b5da89118bade968f1a4762141', (req, res) => {
+  res.send('loaderio-1f2972b5da89118bade968f1a4762141');
 });
 
 router.get('/reviews', controller.get);

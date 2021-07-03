@@ -3,11 +3,11 @@ var models = require('../models/psql');
 
 module.exports = {
 
-  get: function (req, res) {
+  get: async function (req, res) {
     let rNumber = Math.floor(Math.random() * 13025)
     let productId = req.query.product_id || rNumber;
     let sort = req.query.sort || 'id';
-    models.getAll(productId, sort, function(err, results) {
+    return await models.getAll(productId, sort, function(err, results) {
       if (err) { console.log(err); res.sendStatus(404)}
       res.send(results);
     });

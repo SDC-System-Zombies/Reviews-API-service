@@ -8,17 +8,17 @@ module.exports = {
 
     pool.query(queryStr)
       .then((data) => {
-        // let detail = {product: productId, page: 0, count: data.rows.length};
-        // results = data.rows;
-        // for (let i of results) {
-        //   delete i.id;
-        //   delete i.product_id;
-        //   if (!i.photos) {
-        //     i.photos = [];
-        //   }
-        // }
-        // detail.results = results;
-        callback(null, data);
+        let detail = {product: productId, page: 0, count: data.rows.length};
+        results = data.rows;
+        for (let i of results) {
+          delete i.id;
+          delete i.product_id;
+          if (!i.photos) {
+            i.photos = [];
+          }
+        }
+        detail.results = results;
+        callback(null, detail);
       })
       .catch((err) => {console.log('Query All Error: ' + err); callback(404)});
   },
