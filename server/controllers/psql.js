@@ -4,7 +4,8 @@ var models = require('../models/psql');
 module.exports = {
 
   get: function (req, res) {
-    let productId = req.query.product_id || 1;
+    let rNumber = Math.floor(Math.random() * 13025)
+    let productId = req.query.product_id || rNumber;
     let sort = req.query.sort || 'id';
     return models.getAll(productId, sort, function(err, results) {
       if (err) { console.log(err); res.sendStatus(404)}

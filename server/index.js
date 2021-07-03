@@ -45,6 +45,8 @@ fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0.txt', async (request, re
 
 fastify.get('/reviews', controller.get);
 
+fastify.get('/reviews/meta', controller.getMeta);
+
 // Run the server!
 fastify.listen(PORT, '0.0.0.0', function (err, address) {
   if (err) {
