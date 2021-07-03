@@ -39,14 +39,14 @@ fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
 })
 
-fastify.get('/loaderio-1e702b6d033d7f9dc152599df07e24af', async (request, reply) => {
-  reply.send('loaderio-1e702b6d033d7f9dc152599df07e24af');
+fastify.get('/loaderio-38f41e0d24bccad1ab13936639f48ee0', async (request, reply) => {
+  reply.send('loaderio-38f41e0d24bccad1ab13936639f48ee0');
 })
 
 fastify.get('/reviews', controller.get);
 
 // Run the server!
-fastify.listen(PORT, function (err, address) {
+fastify.listen(PORT, '0.0.0.0', function (err, address) {
   if (err) {
     fastify.log.error(err)
     process.exit(1)
