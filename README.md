@@ -18,11 +18,6 @@ Returns a list of reviews for a particular product. This list does not include a
 
 - QueryParameters
 
-| Parameter      | Type |Description  |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
-
 |Parameter	 | Type |	Description  |
 -------------|------|--------------|
 |page|	integer|	Selects the page of results to return. Default 1.|
